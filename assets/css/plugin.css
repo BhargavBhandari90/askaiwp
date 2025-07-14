@@ -145,7 +145,18 @@ body.admin-bar .askaiwp-chat-box {
   border-radius: 20px;
   font-size: 14px;
   line-height: 1.4;
-  white-space: pre-wrap;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.askaiwp-bubble ul,
+.askaiwp-bubble ol {
+  margin: unset;
+}
+
+.askaiwp-bubble .li>ol,
+.askaiwp-bubble li>ul {
+  margin: unset;
 }
 
 .askaiwp-message-user .askaiwp-bubble {

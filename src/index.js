@@ -7,6 +7,7 @@ import { closeSmall } from '@wordpress/icons';
 import chatIcon from './ai-bubble.png';
 import { GoogleGenAI } from '@google/genai';
 import Loader from './components/loader';
+import { parse } from 'marked';
 
 function AskaiWPChat() {
 	const [ isOpen, setIsOpen ] = useState( false );
@@ -20,6 +21,8 @@ function AskaiWPChat() {
 		AskaiWP.settings.gemini_model.replace( 'models/', '' ) ||
 		'gemini-1.5-flash';
 	const messagesEndRef = useRef( null );
+	const chatboxRef = useRef( null );
+
 	const ai = new GoogleGenAI( {
 		apiKey: AskaiWP.settings.gemini_api_key || '',
 	} );
@@ -114,7 +117,7 @@ User Question: ${ input }`;
 
 			setMessages( ( prev ) => [
 				...prev,
-				{ sender: 'ai', text: aiText },
+				{ sender: 'ai', text: parse( aiText ) },
 			] );
 		} catch ( error ) {
 			let errorMsg = __(
@@ -142,9 +145,33 @@ User Question: ${ input }`;
 		}
 	}, [ messages, loading ] );
 
+	// Handle outside click
+	useEffect( () => {
+		const handleClickOutside = ( e ) => {
+			if (
+				chatboxRef.current &&
+				! chatboxRef.current.contains( e.target )
+			) {
+				setIsOpen( false );
+			}
+		};
+
+		if ( isOpen ) {
+			document.addEventListener( 'mousedown', handleClickOutside );
+		} else {
+			document.removeEventListener( 'mousedown', handleClickOutside );
+		}
+
+		return () =>
+			document.removeEventListener( 'mousedown', handleClickOutside );
+	}, [ isOpen ] );
+
 	return (
 		<>
-			<div className={ `askaiwp-chat-box ${ isOpen ? 'open' : '' }` }>
+			<div
+				ref={ chatboxRef }
+				className={ `askaiwp-chat-box ${ isOpen ? 'open' : '' }` }
+			>
 				<div className="askaiwp-header">
 					{ aiName }
 					<Button

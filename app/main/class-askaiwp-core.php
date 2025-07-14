@@ -39,10 +39,15 @@ if ( ! class_exists( 'AskaiWP_Core' ) ) {
 			// Add custom style and script.
 			add_action( 'wp_enqueue_scripts', array( $this, 'askai_enqueue_style_script' ) );
 
+			// Add container for AI Chatbox.
 			add_action( 'wp_footer', array( $this, 'askaiwp_add_chat_container' ) );
 		}
 
-
+		/**
+		 * Add plugin style and script.
+		 *
+		 * @return void
+		 */
 		public function askai_enqueue_style_script() {
 
 			$css_file = 'plugin.min.css';
@@ -62,7 +67,7 @@ if ( ! class_exists( 'AskaiWP_Core' ) ) {
 			// Automatically load imported dependencies and assets version.
 			$asset_file = include trailingslashit( ASKAI_PATH ) . 'build/index.asset.php';
 
-			// Custom plugin script.
+			// Plugin script.
 			wp_enqueue_script(
 				'askaiwp-script',
 				ASKAI_URL . 'build/index.js',
@@ -88,7 +93,10 @@ if ( ! class_exists( 'AskaiWP_Core' ) ) {
 		 * @return void
 		 */
 		public function askaiwp_add_chat_container() {
-			echo '<div id="askaiwp-root"></div>';
+
+			if ( is_single() ) {
+				echo '<div id="askaiwp-root"></div>';
+			}
 		}
 	}
 
