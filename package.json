@@ -1,0 +1,30 @@
+{
+	"name": "askaiwp",
+	"version": "1.0.0",
+	"description": "Summarize, explain, and chat — directly on your WordPress site.",
+	"main": "Gruntfile.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start",
+		"readme": "grunt readme",
+		"i18n": "grunt i18n",
+		"phpcbf": "phpcbf . --standard=WordPress --ignore=*/node_modules/* --extensions=php"
+	},
+	"author": "Bili Plugins",
+	"dependencies": {
+		"@google/genai": "^1.9.0",
+		"@wordpress/icons": "^10.26.0",
+		"grunt": "^1.3.0",
+		"grunt-wp-i18n": "^1.0.3"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.14.1",
+		"grunt-contrib-cssmin": "^3.0.0",
+		"grunt-contrib-uglify": "^5.0.0",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-phpcbf": "^0.1.1"
+	}
+}

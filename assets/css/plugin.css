@@ -1,0 +1,209 @@
+.askaiwp-floating-icon {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  z-index: 9999;
+  border: none;
+}
+
+.askaiwp-floating-icon:hover {
+  transform: scale(1.1);
+}
+
+.askaiwp-chat-box {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: sans-serif;
+  transition: right 0.3s ease;
+  z-index: 9998;
+}
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .askaiwp-chat-box {
+    width: 80vw;
+    right: -82vw;
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .askaiwp-chat-box {
+    width: 100vw;
+    right: -100vw;
+  }
+}
+
+.askaiwp-chat-box.open {
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+}
+
+.askaiwp-header {
+  background: #4726BD;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.components-button.is-tertiary.askaiwp-close-btn,
+.components-button.is-tertiary.askaiwp-close-btn:hover {
+  background: none !important;
+  border: none !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.components-button.is-tertiary.askaiwp-close-btn svg {
+  fill: #fff;
+}
+
+.askaiwp-body {
+  padding: 10px;
+  height: calc(100vh - 86px);
+  display: flex;
+  flex-direction: column;
+}
+
+.askaiwp-input {
+  width: 100%;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+#askaiwp-root .components-button.is-tertiary.askaiwp-send-btn {
+  margin-top: 8px;
+  padding: 8px;
+  background: #4726BD !important;
+  border: none !important;
+}
+
+.askaiwp-send-btn:hover {
+  background: #2e3d9f;
+}
+
+/* Adjust top offset when admin bar is present */
+body.admin-bar .askaiwp-chat-box {
+  top: 32px;
+  /* Admin bar height on desktop */
+  height: calc(100vh - 32px);
+}
+
+/* body.admin-bar .askaiwp-floating-icon {
+  bottom: 52px;
+} */
+
+.askaiwp-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1 1 0%;
+}
+
+.askaiwp-message {
+  display: flex;
+}
+
+.askaiwp-message-user {
+  justify-content: flex-end;
+}
+
+.askaiwp-message-ai {
+  justify-content: flex-start;
+}
+
+.askaiwp-bubble {
+  display: flex;
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.askaiwp-message-user .askaiwp-bubble {
+  background: #3B4CCA;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.askaiwp-message-ai .askaiwp-bubble {
+  background: #f1f1f1;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.askaiwp-typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.askaiwp-typing-indicator span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #999;
+  border-radius: 50%;
+  animation: askaiwp-wave 1.2s infinite ease-in-out;
+}
+
+.askaiwp-typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+.askaiwp-typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.askaiwp-typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes askaiwp-wave {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+}
+
+.askaiwp-typing-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align */
+  padding: 8px 10px;
+}
+
+.askaiwp-greeting {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
