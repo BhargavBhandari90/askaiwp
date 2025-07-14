@@ -192,7 +192,7 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 				case 'password':
 					echo wp_sprintf(
 						'<input type="%s" name="askaiwp_setting[%s]" value="%s" class="%s" /><p class="description">%s</p>',
-						$args['type'],
+						esc_attr( $args['type'] ),
 						esc_attr( $field_name ),
 						esc_attr( $value ),
 						esc_attr( $class ),
