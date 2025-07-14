@@ -27,4 +27,4 @@ jobs:
           npm ci
 
       - name: Run JS Lint
-        run: npm run lint:js
+        run: npm run lint:js src/*.js
