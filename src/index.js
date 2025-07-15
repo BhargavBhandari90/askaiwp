@@ -87,9 +87,11 @@ Please provide a clear, concise, and helpful response.`;
 
 		const userMessage = { sender: 'user', text: input };
 		const postContent =
-			document.querySelector( 'article.entry, .wp-block-post-title' ).textContent || '';
+			document.querySelector( 'article.entry, .wp-block-post-title' )
+				.textContent || '';
 		const postTitle =
-			document.querySelector( 'h1.entry-title, .wp-block-post-title' ).textContent || '';
+			document.querySelector( 'h1.entry-title, .wp-block-post-title' )
+				.textContent || '';
 		const pageDetails = {
 			title: postTitle,
 			content: postContent,
