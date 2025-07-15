@@ -17959,6 +17959,31 @@ module.exports = __webpack_require__.p + "images/ai-bubble.790b588f.png";
 
 /***/ }),
 
+/***/ "./src/components/bubble-message.js":
+/*!******************************************!*\
+  !*** ./src/components/bubble-message.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BubbleMessage)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function BubbleMessage() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "askaiwp-bubble-message",
+    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Need help? Ask me anything!', 'askaiwp')
+  });
+}
+
+/***/ }),
+
 /***/ "./src/components/loader.js":
 /*!**********************************!*\
   !*** ./src/components/loader.js ***!
@@ -18150,14 +18175,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/close-small.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/close-small.js");
 /* harmony import */ var _ai_bubble_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ai-bubble.png */ "./src/ai-bubble.png");
 /* harmony import */ var _google_genai__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @google/genai */ "./node_modules/@google/genai/dist/web/index.mjs");
 /* harmony import */ var _components_loader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/loader */ "./src/components/loader.js");
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.esm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_bubble_message__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/bubble-message */ "./src/components/bubble-message.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__);
 /* global AskaiWP */
+
 
 
 
@@ -18174,6 +18201,7 @@ function AskaiWPChat() {
   const [messages, setMessages] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
   const [displayedText, setDisplayedText] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)('');
+  const [showBubbleMessage, setShowBubbleMessage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(true);
   const greeting = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('How can I help you today?', 'askaiwp');
   const aiName = AskaiWP.settings.ai_name || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('AI', 'askaiwp');
   const geminiModel = AskaiWP.settings.gemini_model.replace('models/', '') || 'gemini-1.5-flash';
@@ -18234,8 +18262,8 @@ Please provide a clear, concise, and helpful response.`;
       sender: 'user',
       text: input
     };
-    const postContent = document.querySelector('article.entry').textContent || '';
-    const postTitle = document.querySelector('h1.entry-title').textContent || '';
+    const postContent = document.querySelector('article.entry, .wp-block-post-title').textContent || '';
+    const postTitle = document.querySelector('h1.entry-title, .wp-block-post-title').textContent || '';
     const pageDetails = {
       title: postTitle,
       content: postContent
@@ -18294,42 +18322,48 @@ User Question: ${input}`;
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    const timer = setTimeout(() => {
+      setShowBubbleMessage(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       ref: chatboxRef,
       className: `askaiwp-chat-box ${isOpen ? 'open' : ''}`,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "askaiwp-header",
-        children: [aiName, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+        children: [aiName, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
           onClick: () => setIsOpen(false),
           variant: "tertiary",
-          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
           className: "askaiwp-close-btn"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "askaiwp-body",
-        children: [messages.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: [messages.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "askaiwp-greeting",
           children: displayedText
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "askaiwp-messages",
-          children: [messages.map((msg, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: [messages.map((msg, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: `askaiwp-message askaiwp-message-${msg.sender === 'user' ? 'user' : 'ai'}`,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "askaiwp-bubble",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("strong", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("strong", {
                 children: [msg.sender === 'user' ? 'You' : aiName, ":", ' ']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "askaiwp-text",
                 dangerouslySetInnerHTML: {
                   __html: msg.text
                 }
               })]
             })
-          }, index)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          }, index)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             ref: messagesEndRef
           })]
-        }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_loader__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
+        }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_loader__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
           __nextHasNoMarginBottom: true,
           value: input,
           onChange: value => setInput(value),
@@ -18337,7 +18371,7 @@ User Question: ${input}`;
           help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Press ENTER to Send', 'askaiwp'),
           className: "askaiwp-input",
           onKeyDown: sendMessage
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
           onClick: handleSend,
           variant: "tertiary",
           label: "Send",
@@ -18345,25 +18379,25 @@ User Question: ${input}`;
           children: "Send"
         })]
       })]
-    }), !isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    }), !isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
       className: "askaiwp-floating-icon",
       onClick: () => setIsOpen(true),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+      children: [showBubbleMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_bubble_message__WEBPACK_IMPORTED_MODULE_7__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
         icon: ({
           size
-        }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+        }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
           width: size,
           height: size,
           src: _ai_bubble_png__WEBPACK_IMPORTED_MODULE_3__,
           alt: "AskaiWP"
         })
-      })
+      })]
     })]
   });
 }
 const domNode = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createRoot)(document.getElementById('askaiwp-root'));
 window.addEventListener('load', function () {
-  domNode.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(AskaiWPChat, {}));
+  domNode.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(AskaiWPChat, {}));
 }, false);
 })();
 

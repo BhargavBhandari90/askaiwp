@@ -15,10 +15,13 @@
   transition: all 0.3s;
   z-index: 9999;
   border: none;
+  background: none;
+  padding: revert;
 }
 
 .askaiwp-floating-icon:hover {
   transform: scale(1.1);
+  background: none;
 }
 
 .askaiwp-chat-box {
@@ -83,7 +86,7 @@
 }
 
 .askaiwp-body {
-  padding: 10px;
+  padding: 0 20px;
   height: calc(100vh - 86px);
   display: flex;
   flex-direction: column;
@@ -100,6 +103,8 @@
   padding: 8px;
   background: #4726BD !important;
   border: none !important;
+  cursor: pointer;
+  color: #fff;
 }
 
 .askaiwp-send-btn:hover {
@@ -121,7 +126,6 @@ body.admin-bar .askaiwp-chat-box {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 10px;
   overflow-y: auto;
   flex: 1 1 0%;
 }
@@ -217,4 +221,29 @@ body.admin-bar .askaiwp-chat-box {
   font-size: 1.6rem;
   margin-bottom: 10px;
   text-align: center;
+}
+
+.askaiwp-bubble-message {
+  position: absolute;
+  right: 70px;
+  bottom: 10px;
+  background: #fff;
+  color: #111;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  white-space: nowrap;
+  animation: askaiwp-bubble-slide-in 0.5s ease forwards;
+}
+
+@keyframes askaiwp-bubble-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

@@ -8,6 +8,7 @@ import chatIcon from './ai-bubble.png';
 import { GoogleGenAI } from '@google/genai';
 import Loader from './components/loader';
 import { parse } from 'marked';
+import BubbleMessage from './components/bubble-message';
 
 function AskaiWPChat() {
 	const [ isOpen, setIsOpen ] = useState( false );
@@ -15,6 +16,7 @@ function AskaiWPChat() {
 	const [ messages, setMessages ] = useState( [] );
 	const [ loading, setLoading ] = useState( false );
 	const [ displayedText, setDisplayedText ] = useState( '' );
+	const [ showBubbleMessage, setShowBubbleMessage ] = useState( true );
 	const greeting = __( 'How can I help you today?', 'askaiwp' );
 	const aiName = AskaiWP.settings.ai_name || __( 'AI', 'askaiwp' );
 	const geminiModel =
@@ -85,9 +87,9 @@ Please provide a clear, concise, and helpful response.`;
 
 		const userMessage = { sender: 'user', text: input };
 		const postContent =
-			document.querySelector( 'article.entry' ).textContent || '';
+			document.querySelector( 'article.entry, .wp-block-post-title' ).textContent || '';
 		const postTitle =
-			document.querySelector( 'h1.entry-title' ).textContent || '';
+			document.querySelector( 'h1.entry-title, .wp-block-post-title' ).textContent || '';
 		const pageDetails = {
 			title: postTitle,
 			content: postContent,
@@ -166,6 +168,14 @@ User Question: ${ input }`;
 			document.removeEventListener( 'mousedown', handleClickOutside );
 	}, [ isOpen ] );
 
+	useEffect( () => {
+		const timer = setTimeout( () => {
+			setShowBubbleMessage( false );
+		}, 5000 );
+
+		return () => clearTimeout( timer );
+	}, [] );
+
 	return (
 		<>
 			<div
@@ -242,6 +252,7 @@ User Question: ${ input }`;
 					className="askaiwp-floating-icon"
 					onClick={ () => setIsOpen( true ) }
 				>
+					{ showBubbleMessage && <BubbleMessage /> }
 					<Icon
 						icon={ ( { size } ) => (
 							<img
