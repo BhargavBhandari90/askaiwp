@@ -3,7 +3,7 @@
 import { __ } from '@wordpress/i18n';
 import { Button, Icon, TextareaControl } from '@wordpress/components';
 import { useState, createRoot, useRef, useEffect } from '@wordpress/element';
-import { closeSmall } from '@wordpress/icons';
+import { closeSmall, send } from '@wordpress/icons';
 import chatIcon from './ai-bubble.png';
 import { GoogleGenAI } from '@google/genai';
 import Loader from './components/loader';
@@ -226,26 +226,27 @@ User Question: ${ input }`;
 						<div ref={ messagesEndRef }></div>
 					</div>
 					{ loading && <Loader /> }
-					<TextareaControl
-						__nextHasNoMarginBottom
-						value={ input }
-						onChange={ ( value ) => setInput( value ) }
-						placeholder={ __(
-							'Type your question here…',
-							'askaiwp'
-						) }
-						help={ __( 'Press ENTER to Send', 'askaiwp' ) }
-						className="askaiwp-input"
-						onKeyDown={ sendMessage }
-					/>
-					<Button
-						onClick={ handleSend }
-						variant="tertiary"
-						label="Send"
-						className="askaiwp-send-btn"
-					>
-						Send
-					</Button>
+					<div className="askaiwp-ask-que-wrapper">
+						<TextareaControl
+							__nextHasNoMarginBottom
+							value={ input }
+							onChange={ ( value ) => setInput( value ) }
+							placeholder={ __(
+								'Type your question here…',
+								'askaiwp'
+							) }
+							help={ __( 'Press ENTER to Send', 'askaiwp' ) }
+							className="askaiwp-input"
+							onKeyDown={ sendMessage }
+						/>
+						<Button
+							onClick={ handleSend }
+							variant="tertiary"
+							className="askaiwp-send-btn"
+							label={ __( 'Send', 'askaiwp' ) }
+							icon={ send }
+						></Button>
+					</div>
 				</div>
 			</div>
 

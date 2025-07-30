@@ -98,13 +98,18 @@
   box-sizing: border-box;
 }
 
+.askaiwp-ask-que-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+}
+
 #askaiwp-root .components-button.is-tertiary.askaiwp-send-btn {
-  margin-top: 8px;
-  padding: 8px;
-  background: #4726BD !important;
+  position: absolute;
   border: none !important;
   cursor: pointer;
-  color: #fff;
+  background: none;
+  bottom: 26px;
+  right: 0;
 }
 
 .askaiwp-send-btn:hover {
@@ -195,17 +200,23 @@ body.admin-bar .askaiwp-chat-box {
 .askaiwp-typing-indicator span:nth-child(1) {
   animation-delay: 0s;
 }
+
 .askaiwp-typing-indicator span:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .askaiwp-typing-indicator span:nth-child(3) {
   animation-delay: 0.4s;
 }
 
 @keyframes askaiwp-wave {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-6px);
   }
@@ -213,7 +224,8 @@ body.admin-bar .askaiwp-chat-box {
 
 .askaiwp-typing-wrapper {
   display: flex;
-  justify-content: flex-start; /* left align */
+  justify-content: flex-start;
+  /* left align */
   padding: 8px 10px;
 }
 
@@ -242,6 +254,7 @@ body.admin-bar .askaiwp-chat-box {
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
