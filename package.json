@@ -4,13 +4,15 @@
 	"description": "Summarize, explain, and chat — directly on your WordPress site.",
 	"main": "Gruntfile.js",
 	"scripts": {
-		"build": "wp-scripts build",
+		"build": "wp-scripts build && npm run minify:js && npm run minify:css",
 		"format": "wp-scripts format",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start",
 		"readme": "grunt readme",
 		"i18n": "grunt i18n",
+		"minify:js": "terser assets/js/plugin.js -o assets/js/plugin.min.js --compress --mangle",
+    	"minify:css": "cleancss -o assets/css/plugin.min.css assets/css/plugin.css",
 		"phpcbf": "phpcbf . --standard=WordPress --ignore=*/node_modules/* --extensions=php"
 	},
 	"author": "Bili Plugins",
@@ -23,9 +25,11 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.14.1",
+		"clean-css-cli": "^5.6.3",
 		"grunt-contrib-cssmin": "^3.0.0",
 		"grunt-contrib-uglify": "^5.0.0",
 		"grunt-contrib-watch": "^1.1.0",
-		"grunt-phpcbf": "^0.1.1"
+		"grunt-phpcbf": "^0.1.1",
+		"terser": "^5.43.1"
 	}
 }
