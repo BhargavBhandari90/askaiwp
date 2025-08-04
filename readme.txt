@@ -1,9 +1,9 @@
 === AskaiWP ===
 Contributors:      bhargavbhandari90, biliplugins
 Donate link:       https://www.paypal.me/BnB90/20
-Tags:              plugin
+Tags:              ai, chat, gemini, askai, chatbot
 Requires at least: 6.6
-Tested up to:      6.7
+Tested up to:      6.8
 Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 Requires PHP:      7.4
@@ -13,22 +13,41 @@ Summarize, explain, and chat — directly on your WordPress site.
 
 == Description ==
 
-Summarize, explain, and chat — directly on your WordPress site.
+AskaiWP adds an AI-powered chat assistant to the bottom-right corner of your WordPress site. Visitors can interact with Gemini AI to:
+
+- Get a short summary of the current page.
+- Ask questions about the content.
+- Get explanations, highlights, and follow-up answers.
+
+Perfect for blogs, tutorials, and knowledge bases — AskaiWP brings AI to the front of your content.
+
+== Features ==
+
+* Floating AI chat icon.
+* Slide-out chat panel with full-screen height.
+* Gemini AI-powered page summarization.
+* Automatically reads page content.
+* Responsive and mobile-friendly UI.
+* Escape key and outside click support to close chat.
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/askaiwp` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Add your Gemini API key in the plugin settings.
+4. You're all set! Click the floating icon on any page to start chatting.
 
 == Screenshots ==
 
-1. screenshot-1
-2. screenshot-2
+1. Chat Bubble.
+2. Opened AI chat window with summary interaction.
+3. Chatbot Setting.
 
 == GitHub Repo ==
 
+Coming soon.
 
 == Changelog ==
 
 = 1.0.0 =
-* Inital Release
+* Initial Release.

@@ -262,7 +262,7 @@ User Question: ${ input }`;
 								width={ size }
 								height={ size }
 								src={ chatIcon }
-								alt="AskaiWP"
+								alt={ __( 'AskaiWP', 'askaiwp' ) }
 							/>
 						) }
 					/>

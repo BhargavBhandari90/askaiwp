@@ -126,7 +126,7 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 					'name'        => 'gemini_api_key',
 					'class'       => 'regular-text',
 					'type'        => 'password',
-					'description' => __( 'Get Gemini key from <a href="https://aistudio.google.com/app/apikey" target="_blank">here</a>' ),
+					'description' => __( 'Get Gemini key from <a href="https://aistudio.google.com/app/apikey" target="_blank">here</a>', 'askaiwp' ),
 				)
 			);
 
