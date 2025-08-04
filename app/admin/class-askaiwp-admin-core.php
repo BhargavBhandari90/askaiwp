@@ -76,7 +76,13 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 		 */
 		public function askai_register_settings() {
 
-			register_setting( 'askaiwp_settings', 'askaiwp_setting' );
+			register_setting(
+				'askaiwp_settings',
+				'askaiwp_setting',
+				array(
+					'type' => 'array',
+				)
+			);
 
 			// General Section.
 			add_settings_section(
@@ -220,13 +226,15 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 						<option value="">
 							<?php esc_html_e( 'Select Option', 'askaiwp' ); ?>
 						</option>
-						<?php foreach ( $options as $key => $option ) : ?>
-							<option value="<?php echo esc_attr( $key ); ?>"
-								<?php echo ! empty( $value ) ? ( selected( $value, $key, false ) ) : ( '' ); ?>
-							>
-								<?php echo esc_html( $option ); ?>
-							</option>
-						<?php endforeach; ?>
+						<?php if ( ! empty( $options ) ) : ?>
+							<?php foreach ( $options as $key => $option ) : ?>
+								<option value="<?php echo esc_attr( $key ); ?>"
+									<?php echo ! empty( $value ) ? ( selected( $value, $key, false ) ) : ( '' ); ?>
+								>
+									<?php echo esc_html( $option ); ?>
+								</option>
+							<?php endforeach; ?>
+						<?php endif; ?>
 					</select>
 					<p class="description">
 						<?php echo esc_html( $args['description'] ); ?>
