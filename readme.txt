@@ -49,7 +49,7 @@ This plugin connects to Google's Generative AI API (Gemini) to process and respo
 
 When you use the chat feature, the plugin sends:
 - Your entered question or prompt text.
-- (Optional) Page content or excerpts you choose to summarize.
+- Page content from the page you visit ( NOT from database ).
 
 This data is sent to:
 Google Generative AI API (Gemini)  
