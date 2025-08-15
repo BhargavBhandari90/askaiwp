@@ -18433,7 +18433,6 @@ User Question: ${input}`;
   });
 }
 const domNode = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createRoot)(document.getElementById('askaiwp-root'));
-console.log('domNode', domNode);
 window.addEventListener('load', function () {
   domNode.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(AskaiWPChat, {}));
 }, false);

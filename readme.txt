@@ -43,9 +43,31 @@ Perfect for blogs, tutorials, and knowledge bases — AskaiWP brings AI to the f
 2. Opened AI chat window with summary interaction.
 3. Chatbot Setting.
 
-== GitHub Repo ==
+== External Services ==
 
-Coming soon.
+This plugin connects to Google's Generative AI API (Gemini) to process and respond to user prompts and to summarize webpage content.
+
+When you use the chat feature, the plugin sends:
+- Your entered question or prompt text.
+- (Optional) Page content or excerpts you choose to summarize.
+
+This data is sent to:
+Google Generative AI API (Gemini)  
+Base URLs:  
+- https://generativelanguage.googleapis.com/  
+- https://aiplatform.googleapis.com/  
+- https://vertexai.googleapis.com/  
+
+The data is transmitted over HTTPS and used only to generate AI-powered responses. No personal identifying data is sent unless you explicitly include it in your prompt.
+
+You must provide your own Gemini API key for the plugin to function. Without it, no data will be sent.
+
+**Service provider:** Google LLC  
+**Terms of Service:** https://ai.google.dev/terms  
+**Privacy Policy:** https://policies.google.com/privacy
+
+== GitHub Repo ==
+[https://github.com/BhargavBhandari90/askaiwp](https://github.com/BhargavBhandari90/askaiwp)
 
 == Changelog ==
 
