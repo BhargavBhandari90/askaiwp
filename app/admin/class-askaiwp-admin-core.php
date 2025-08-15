@@ -80,7 +80,8 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 				'askaiwp_settings',
 				'askaiwp_setting',
 				array(
-					'type' => 'array',
+					'type'              => 'array',
+					'sanitize_callback' => array( $this, 'askai_sanitize_settings' ),
 				)
 			);
 
@@ -164,6 +165,34 @@ if ( ! class_exists( 'AskaiWP_Admin_Core' ) ) {
 					'description' => esc_html__( 'Set prompt for Gemini.', 'askaiwp' ),
 				)
 			);
+		}
+
+		/**
+		 * Sanitize setting.
+		 *
+		 * @param  array $input Setting array.
+		 * @return array        Sanitized array.
+		 */
+		public function askai_sanitize_settings( $input ) {
+
+			if ( ! is_array( $input ) ) {
+				return $input;
+			}
+
+			$sanitized = array();
+
+			foreach ( $input as $key => $value ) {
+
+				switch ( $key ) {
+					case 'gemini_prompt':
+						$sanitized[ $key ] = sanitize_textarea_field( $value );
+						break;
+					default:
+						$sanitized[ $key ] = sanitize_text_field( $value );
+				}
+			}
+
+			return $sanitized;
 		}
 
 		/**
