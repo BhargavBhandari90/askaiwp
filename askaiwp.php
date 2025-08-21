@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     AskaiWP
- * Description:     Summarize, explain, and chat — directly on your WordPress site.
+ * Description:     Summarize, explain, and chat - directly on your WordPress site.
  * Author:          BuntyWP
  * Author URI:      https://biliplugins.com/
  * Text Domain:     askaiwp

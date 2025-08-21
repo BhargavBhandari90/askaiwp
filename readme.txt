@@ -21,6 +21,8 @@ AskaiWP adds an AI-powered chat assistant to the bottom-right corner of your Wor
 
 Perfect for blogs, tutorials, and knowledge bases — AskaiWP brings AI to the front of your content.
 
+https://www.youtube.com/watch?v=t7OKGhaTC_Q
+
 == Features ==
 
 * Floating AI chat icon.

@@ -55,7 +55,7 @@ You must provide your own Gemini API key for the plugin to function. Without it,
 **Privacy Policy:** https://policies.google.com/privacy
 
 ## Demo
-Coming Soon...
+https://www.youtube.com/watch?v=t7OKGhaTC_Q
 
 ## Prerequisites
 
